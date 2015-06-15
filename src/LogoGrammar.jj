@@ -1,0 +1,6 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */options{  static = true;}PARSER_BEGIN(logo_parser)
+public class logo_parser{  public static void main(String args []) throws ParseException  {    logo_parser parser = new logo_parser(System.in);    while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter a valid Logo code :");      try      {        program();
+        System.out.println("OK");      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        logo_parser.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(logo_parser)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN :{  < CONSTANT : (< DIGIT >)+ >| < #DIGIT : [ "0"-"9" ] >}void program() :{}{  "POUR" (command())* "FIN"}void command() :{}{  (    "AV" | "TD"
+  ) element()}void element() :{}{  < CONSTANT >}
