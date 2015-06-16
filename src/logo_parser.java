@@ -3,37 +3,32 @@ public class logo_parser implements logo_parserConstants {
   public static void main(String args []) throws ParseException
   {
     logo_parser parser = new logo_parser(System.in);
-    while (true)
+    System.out.println("Reading from standard input...");
+    System.out.print("Enter a valid Logo code :");
+    try
     {
-      System.out.println("Reading from standard input...");
-      System.out.print("Enter a valid Logo code :");
-      try
-      {
-        program();
-        System.out.println("OK");
-      }
-      catch (Exception e)
-      {
-        System.out.println("NOK.");
-        System.out.println(e.getMessage());
-        logo_parser.ReInit(System.in);
-      }
-      catch (Error e)
-      {
-        System.out.println("Oops.");
-        System.out.println(e.getMessage());
-        break;
-      }
+      program();
+      System.out.println("OK");
+    }
+    catch (Exception e)
+    {
+      System.out.println("NOK.");
+      System.out.println(e.getMessage());
+      logo_parser.ReInit(System.in);
+    }
+    catch (Error e)
+    {
+      System.out.println("Oops.");
+      System.out.println(e.getMessage());
     }
   }
 
   static final public void program() throws ParseException {
-    jj_consume_token(7);
     label_1:
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-      case 9:
-      case 10:
+      case PRIMITIVE:
+      case 8:
         ;
         break;
       default:
@@ -42,23 +37,41 @@ public class logo_parser implements logo_parserConstants {
       }
       command();
     }
-    jj_consume_token(8);
+    jj_consume_token(0);
   }
 
   static final public void command() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-    case 9:
+    case 8:
+      jj_consume_token(8);
+      label_2:
+      while (true) {
+        instruction();
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case PRIMITIVE:
+          ;
+          break;
+        default:
+          jj_la1[1] = jj_gen;
+          break label_2;
+        }
+      }
       jj_consume_token(9);
       break;
-    case 10:
-      jj_consume_token(10);
+    case PRIMITIVE:
+      instruction();
       break;
     default:
-      jj_la1[1] = jj_gen;
+      jj_la1[2] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
+  }
+
+  static final public void instruction() throws ParseException {
+    jj_consume_token(PRIMITIVE);
     element();
+    System.err.println("Instruction");
   }
 
   static final public void element() throws ParseException {
@@ -75,13 +88,13 @@ public class logo_parser implements logo_parserConstants {
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[2];
+  static final private int[] jj_la1 = new int[3];
   static private int[] jj_la1_0;
   static {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x600,0x600,};
+      jj_la1_0 = new int[] {0x180,0x80,0x180,};
    }
 
   /** Constructor with InputStream. */
@@ -102,7 +115,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -116,7 +129,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -133,7 +146,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -143,7 +156,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -159,7 +172,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -168,7 +181,7 @@ public class logo_parser implements logo_parserConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 2; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 3; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -219,12 +232,12 @@ public class logo_parser implements logo_parserConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[11];
+    boolean[] la1tokens = new boolean[10];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -233,7 +246,7 @@ public class logo_parser implements logo_parserConstants {
         }
       }
     }
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 10; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
