@@ -28,7 +28,7 @@ public class logo_parser implements logo_parserConstants {
     while (true) {
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case PRIMITIVE:
-      case 8:
+      case 9:
         ;
         break;
       default:
@@ -42,8 +42,9 @@ public class logo_parser implements logo_parserConstants {
 
   static final public void command() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-    case 8:
-      jj_consume_token(8);
+    case 9:
+      jj_consume_token(9);
+      jj_consume_token(FUNCTION);
       label_2:
       while (true) {
         instruction();
@@ -56,7 +57,7 @@ public class logo_parser implements logo_parserConstants {
           break label_2;
         }
       }
-      jj_consume_token(9);
+      jj_consume_token(10);
       break;
     case PRIMITIVE:
       instruction();
@@ -94,7 +95,7 @@ public class logo_parser implements logo_parserConstants {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x180,0x80,0x180,};
+      jj_la1_0 = new int[] {0x280,0x80,0x280,};
    }
 
   /** Constructor with InputStream. */
@@ -232,7 +233,7 @@ public class logo_parser implements logo_parserConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[10];
+    boolean[] la1tokens = new boolean[11];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
@@ -246,7 +247,7 @@ public class logo_parser implements logo_parserConstants {
         }
       }
     }
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 11; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
