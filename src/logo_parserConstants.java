@@ -14,6 +14,8 @@ public interface logo_parserConstants {
   int DIGIT = 6;
   /** RegularExpression Id. */
   int PRIMITIVE = 7;
+  /** RegularExpression Id. */
+  int FUNCTION = 8;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -28,6 +30,7 @@ public interface logo_parserConstants {
     "<CONSTANT>",
     "<DIGIT>",
     "<PRIMITIVE>",
+    "<FUNCTION>",
     "\"POUR\"",
     "\"FIN\"",
   };
