@@ -127,6 +127,7 @@ public class Test extends JFrame {
 			JMenuItem item = new JMenuItem("New", 'N');
 			item.addActionListener(afficherMenuListener);
 			fichierMenu.add(item);
+			
 			item = new JMenuItem("Open", 'O');
 			item.addActionListener(afficherMenuListener);
 			fichierMenu.add(item);
@@ -135,7 +136,12 @@ public class Test extends JFrame {
 			fichierMenu.insertSeparator(1);
 			fichierMenu.add(item);
 			item = new JMenuItem("Quit",'Q');
-			item.addActionListener(afficherMenuListener);
+			item.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent event) {
+			        System.exit(0);
+			    }
+			});
 			fichierMenu.add(item);
 		
 			menuBar= new JMenuBar();
